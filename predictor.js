@@ -2,17 +2,17 @@
   'use strict';
   var predict = function () {
     var defaults = {
-		  sentenceMode: false,
-			stopRule: false,
-			service: '',
-			prediction: false
-		},
-		elems = Object.create(null),
-		opts = Object.create(null),
-		active = null,
-		result,last,
-		loading = false,
-		predictions;
+        sentenceMode: false,
+        stopRule: false,
+        service: '',
+        prediction: false
+      },
+      elems = Object.create(null),
+      opts = Object.create(null),
+      active = null,
+      result,last,
+      loading = false,
+      predictions;
 		function select(el, start, end) {
 	    if(el.createTextRange) {
 	      var sel = el.createTextRange();
