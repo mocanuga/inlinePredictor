@@ -5,7 +5,7 @@
       sentenceMode: false,
       stopRule: false,
       service: '',
-      prediction: false
+      prediction: function () {return false;}
     },
     elems = Object.create(null),
     opts = Object.create(null),
@@ -52,7 +52,7 @@
   function defer(t, w, v) {
     if(!!loading) return false;
     loading = true;
-    $.post(opts.service, 'request=predict&q=' + v + '&_token=' + _token, function (r) {
+    $.post(opts.service, 'q=' + v, function (r) {
       loading = false;
       if(r == 'nok') return;
       predictions = r.slice();
