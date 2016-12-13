@@ -10,7 +10,7 @@ prediction.
 It uses a simple service to get the predictions.
 
 Usage:
-
+``
 <script type="type/javascript" src="predictor.js"></script>
 <script type="text/javascript">
   var predictable = document.querySelector('input[name="q"]');
@@ -18,5 +18,5 @@ Usage:
     service: 'predictions.json'
   });
 </script>
-
+``
 You can use it for filter fields such as usernames, emails, addresses, phone numbers and many others.
