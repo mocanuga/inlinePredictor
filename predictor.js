@@ -5,7 +5,7 @@
       sentenceMode: false,
       stopRule: false,
       service: '',
-      prediction: function () {return false;}
+      prediction: null
     },
     elems = Object.create(null),
     opts = Object.create(null),
@@ -46,7 +46,7 @@
     l = t.value.length;
     select(t, l-s.length, l);
     if(typeof opts.prediction === 'function') {
-    opts.prediction.call(null, t, t.value, i, s);
+      opts.prediction.call(null, t, t.value, i, s);
     }
   };
   function defer(t, w, v) {
