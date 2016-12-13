@@ -1,4 +1,4 @@
-(function (w, d, $, undefined) {
+(function (w, d, undefined) {
   'use strict';
   var predict = function () {
     var defaults = {
@@ -13,6 +13,18 @@
     result,last,
     loading = false,
     predictions;
+  function extend(destination, source) {
+		var property;
+		for (property in source) {
+			if (source[property] && source[property].constructor && source[property].constructor === Object) {
+    			destination[property] = destination[property] || {};
+    			extend(destination[property], source[property]);
+			} else {
+				destination[property] = source[property];
+			}
+		}
+	    	return destination;
+	}
   function select(el, start, end) {
     if(el.createTextRange) {
       var sel = el.createTextRange();
@@ -125,7 +137,7 @@
         element.addEventListener('keyup',   ku, true);
         element.addEventListener('keydown', kd, true);
         elems[element.getAttribute('name')] = {};
-        elems[element.getAttribute('name')].opts = $.extend(defaults, options);
+        elems[element.getAttribute('name')].opts = extend(defaults, options);
       },
       unbind: function(element) {
         element.removeEventListener('focus',   activate, true);
@@ -137,4 +149,4 @@
     }
   };
   w['predict'] = new predict(); 
-}(window, document, $));
+}(window, document));
