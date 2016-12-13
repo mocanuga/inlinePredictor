@@ -14,7 +14,7 @@
   <script type="text/javascript">
     predict.bind(document.querySelector('input[name="q"]'), {
       service: 'predictions.json',
-      stopRule: new RegExp('^([a-zA-Z]+),\\s([a-zA-Z]{2})$'),
+      //stopRule: new RegExp('^([a-zA-Z]+),\\s([a-zA-Z]{2})$'),
       sentenceMode: false,
       prediction: function (el, val, pred) {
         console.log("prediction", arguments);
