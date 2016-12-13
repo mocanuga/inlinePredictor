@@ -13,7 +13,7 @@
       result,last,
       loading = false,
       predictions;
-		function select(el, start, end) {
+    function select(el, start, end) {
 	    if(el.createTextRange) {
 	      var sel = el.createTextRange();
 	      sel.collapse(true);
@@ -49,13 +49,13 @@
 			  opts.prediction.call(null, t, t.value, i, s);
 			}
 	  };
-	    function defer(t, w, v) {
-	    	if(!!loading) return false;
-	    	loading = true;
-	    	$.post(opts.service, 'request=predict&q=' + v + '&_token=' + _token, function (r) {
-	    		loading = false;
-	    		if(r == 'nok') return;
-	    		predictions = r.slice();
+    function defer(t, w, v) {
+      if(!!loading) return false;
+      loading = true;
+      $.post(opts.service, 'request=predict&q=' + v + '&_token=' + _token, function (r) {
+        loading = false;
+        if(r == 'nok') return;
+        predictions = r.slice();
         handle(t, r, w, v);
       }, 'json');
     };
