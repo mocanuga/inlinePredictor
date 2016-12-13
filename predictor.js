@@ -52,12 +52,22 @@
   function defer(t, w, v) {
     if(!!loading) return false;
     loading = true;
-    $.post(opts.service, 'q=' + v, function (r) {
-      loading = false;
-      if(r == 'nok') return;
-      predictions = r.slice();
-      handle(t, r, w, v);
-    }, 'json');
+    var http = new XMLHttpRequest(),
+        url = opts.service,
+        params = 'q=' + v, r;
+    http.open("POST", url, true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.onreadystatechange = function() {
+      if(http.readyState == 4 && http.status == 200) {
+        loading = false;
+        r = http.responseText;
+        if(r == 'nok') return;
+        r = JSON.parse(r);
+        predictions = r.slice();
+        handle(t, r, w, v);
+      }
+    }
+    http.send(params);
   };
   function kd(e) {
     var t = e.target,
@@ -109,19 +119,20 @@
     };
     return {
       bind: function (element, options) {
-        if(!element.attr('name')) throw ('The element must have a name');
-        element.on('focus',   activate, true);
-        element.on('blur',    deactivate, true);
-        element.on('keyup',   ku, true);
-        element.on('keydown', kd, true);
-        elems[element.attr('name')] = {};
-        elems[element.attr('name')].opts = $.extend(defaults, options);
+        if(!element.getAttribute('name')) throw ('The element must have a name');
+        element.addEventListener('focus',   activate, true);
+        element.addEventListener('blur',    deactivate, true);
+        element.addEventListener('keyup',   ku, true);
+        element.addEventListener('keydown', kd, true);
+        elems[element.getAttribute('name')] = {};
+        elems[element.getAttribute('name')].opts = $.extend(defaults, options);
       },
       unbind: function(element) {
-        element.off('focus',   activate, true);
-        element.off('blur',    deactivate, true);
-        element.off('keyup',   ku, true);
-        element.off('keydown', kd, true);
+        element.removeEventListener('focus',   activate, true);
+        element.removeEventListener('blur',    deactivate, true);
+        element.removeEventListener('keyup',   ku, true);
+        element.removeEventListener('keydown', kd, true);
+        delete elems[element.getAttribute('name')];
       }
     }
   };
