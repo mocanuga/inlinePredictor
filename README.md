@@ -23,6 +23,7 @@ You can use it for filter fields such as usernames, emails, addresses, phone num
 
 ## Supported browsers
 All modern pc, phone or tablet browsers.
-If you see that the script on your device is not working, please report the issue in the issues tab.
+If you see that the script on your device is not working, 
+please report the issue in the issues tab.
 
 Thanks.
