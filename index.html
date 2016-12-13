@@ -2,12 +2,17 @@
 <html>
 <head>
   <title>inlinePredictor DEMO</title>
+  <style type="text/css">
+  [name=q]::-webkit-selection {color: rgba(0,0,0,0.5);}
+  [name=q]::-moz-selection {color: rgba(0,0,0,0.5);}
+  [name=q]::selection{color: rgba(0,0,0,.5);}
+  </style>
 </head>
 <body>
   <input name="q" type="text">
   <script type="text/javascript" src="predictor.js"></script>
   <script type="text/javascript">
-    predict.bind($('input[name="q"]'), {
+    predict.bind(document.querySelector('input[name="q"]'), {
       service: 'predictions.json',
       stopRule: new RegExp('^([a-zA-Z]+),\\s([a-zA-Z]{2})$'),
       sentenceMode: false,
