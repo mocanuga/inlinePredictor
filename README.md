@@ -19,11 +19,14 @@ It uses a simple service to get the predictions.
   });
 </script>
 ```
-You can use it for filter fields such as usernames, emails, addresses, phone numbers and many others.
+You can use it for filter fields such as usernames, emails, addresses,
+phone numbers and many others.
 
 ## Supported browsers
 All modern pc, phone or tablet browsers.
+
 If you see that the script on your device is not working, 
+
 please report the issue in the issues tab.
 
 Thanks.
