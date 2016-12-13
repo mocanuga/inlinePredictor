@@ -1,0 +1,19 @@
+<doctype html>
+<html>
+<head>
+  <title>inlinePredictor DEMO</title>
+</head>
+<body>
+  <input name="q" type="text">
+  <script type="text/javascript" src="predictor.js"></script>
+  <script type="text/javascript>  
+    predict.bind($search.find('input[name="q"]'), {
+      service: '/includes/services/location_service.php',
+      stopRule: new RegExp('^([a-zA-Z]+),\\s([a-zA-Z]{2})$'),
+      sentenceMode: false,
+      prediction: function (el, val, pred) {
+        console.log("prediction", arguments);
+      }
+    });
+  </script>
+</body>
